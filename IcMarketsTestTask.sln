@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IcMarketsTestTask.API", "src\IcMarketsTestTask.API\IcMarketsTestTask.API.csproj", "{5CAB176F-A1D2-4DCE-92A7-425525AD4CEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IcMarketsTestTask.IntegrationTests", "tests\IcMarketsTestTask.IntegrationTests\IcMarketsTestTask.IntegrationTests.csproj", "{D8CEBDAC-1861-421F-9131-F4FC5021D828}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CAB176F-A1D2-4DCE-92A7-425525AD4CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CAB176F-A1D2-4DCE-92A7-425525AD4CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CAB176F-A1D2-4DCE-92A7-425525AD4CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CAB176F-A1D2-4DCE-92A7-425525AD4CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8CEBDAC-1861-421F-9131-F4FC5021D828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8CEBDAC-1861-421F-9131-F4FC5021D828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8CEBDAC-1861-421F-9131-F4FC5021D828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8CEBDAC-1861-421F-9131-F4FC5021D828}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
