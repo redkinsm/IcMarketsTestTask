@@ -1,5 +1,6 @@
 ﻿using IcMarketsTestTask.API.ApiModels.Blockchains;
 using IcMarketsTestTask.API.Application.Commands;
+using IcMarketsTestTask.API.Application.Commands.Blockchains;
 using IcMarketsTestTask.API.Application.Queries.Blockchains;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -22,14 +23,14 @@ public class BlockchainsController : ControllerBase
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetBlockchains([FromQuery] GetBlockchainsApiModel request)
     {
-        var query = new GetBlockchainsQuery(request.Symbol);
+        var query = new GetBlockchainsQuery(request.Symbol, request.Limit);
         var result = await _sender.Send(query, HttpContext.RequestAborted);
         return Ok(result);
     }
     
     [HttpPost("sync")]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> SyncBlockchain([FromQuery] GetBlockchainsApiModel request)
+    public async Task<IActionResult> SyncBlockchain([FromForm] SyncBlockchainApiModel request)
     {
         var query = new SyncBlockchainCommand(request.Symbol);
         await _sender.Send(query, HttpContext.RequestAborted);
