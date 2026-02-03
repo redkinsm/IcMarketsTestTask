@@ -4,7 +4,7 @@ using IcMarketsTestTask.API.Domain.Entities;
 using IcMarketsTestTask.API.Infrastructure.Data;
 using MediatR;
 
-namespace IcMarketsTestTask.API.Application.Commands;
+namespace IcMarketsTestTask.API.Application.Commands.Blockchains;
 
 public class SyncBlockchainCommandHandler(AppDbContext context, IMapper mapper, IBlockcypherClient blockcypherClient) : IRequestHandler<SyncBlockchainCommand>
 {
