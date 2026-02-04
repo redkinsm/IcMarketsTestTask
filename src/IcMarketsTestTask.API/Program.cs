@@ -1,8 +1,6 @@
-
 using IcMarketsTestTask.API;
 using IcMarketsTestTask.API.Application.Services.Blockchains;
 using IcMarketsTestTask.API.Infrastructure.Data;
-using IcMarketsTestTask.API.Infrastructure.Mappings;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
@@ -28,6 +26,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     ServiceLifetime.Transient
 );
 
+builder.Services
+    .AddHealthChecks()
+    .AddDbContextCheck<AppDbContext>(
+        name: "database",
+        tags: new[] { "ready" });
+
 builder.Services.AddHttpClient<IBlockcypherClient, BlockcypherClient>(client =>
 {
     var baseUrl = builder.Configuration["Blockcypher:BaseUrl"];
@@ -49,8 +53,7 @@ builder.Services.AddCors(options => options.AddPolicy(MyAllowSpecificOrigins, bu
 {
     builder
         .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials();
+        .AllowAnyHeader();
 
     var listOfUrl = new List<string>();
     listOfUrl.Add("http://127.0.0.1:8080");
@@ -66,12 +69,26 @@ builder.Services.AddValidatorsFromAssemblyContaining<AssemblyInfo>(filter: disco
 
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+
 var app = builder.Build();
 app.UseRouting();
 app.UseCors();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
+});
+
+app.MapHealthChecks("/health/live", new HealthCheckOptions
+{
+    Predicate = _ => false
+});
+
+app.MapHealthChecks("/health/ready", new HealthCheckOptions
+{
+    Predicate = check => check.Tags.Contains("ready")
 });
 
 // Configure the HTTP request pipeline.
