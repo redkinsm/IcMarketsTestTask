@@ -43,7 +43,7 @@ public class SyncBlockchainCommandHandlerTests : IntegrationTestBase, IClassFixt
     }
 
     [Fact]
-    public async Task Handle_When_PlatformClientNotExist_Should_ThrowNotFoundException()
+    public async Task Handle_WhenSnapshotReceived_ShouldSaveBlockchainSnapshot()
     {
         // arrange
         var command = Fixture.Build<SyncBlockchainCommand>()
