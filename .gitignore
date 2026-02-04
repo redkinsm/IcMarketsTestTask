@@ -1,0 +1,83 @@
+# Build & artifacts
+bin/
+obj/
+*.user
+*.vs/
+*.vscode/
+
+# .NET 
+*.dll
+*.exe
+*.app
+*.log
+*.pdb
+*.cache
+*.db
+*.db-shm
+*.db-wal
+
+# NuGet
+*.nupkg
+# NuGet local caches
+**/packages/
+**/artifacts/
+
+# VS / Rider
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.idea/
+*.resharper/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Rider
+.idea/
+*.sln.iml
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Docker
+docker-compose.override.yml
+.env
+.env.*
+**/docker-env
+**/docker-compose.*.yml
+
+# EF migrations (optional if you commit them)
+# Migrations are usually committed, so uncomment only if you want to ignore them
+# **/Migrations/*
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Coverage tools
+coverage/
+.opencover/
+*.lcov
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# GitHub Actions
+.github/workflows/*
+
+# VSIX
+*.vsix
+
+# Entity Framework Local DB
+*.mdf
+*.ldf

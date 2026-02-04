@@ -16,6 +16,7 @@ public class GetBlockchainsQueryHandler(AppDbContext context) : IRequestHandler<
             .OrderByDescending(x => x.CreatedAt)
             .Select(x => new GetBlockchainsQueryResponse(
                 x.Name, x.Height, x.CreatedAt))
+            .Take(request.Limit)
             .ToListAsync(cancellationToken);        
         return res;
     }
